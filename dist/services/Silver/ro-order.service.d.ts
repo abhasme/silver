@@ -1,0 +1,37 @@
+import { Model } from "mongoose";
+import { Request } from 'express';
+import { UserDocument } from "../../entities/users.entity";
+import { RoOrderDocument } from "../../entities/Silver/roOrder";
+import { CgOrderDocument } from "../../entities/Silver/cgOrder";
+import { SilverProductDocument } from "../../entities/Silver/silverProductMaster";
+import { RoMasterDocument } from "../../entities/Silver/roMaster";
+import { RoInventoryDocument } from "../../entities/Silver/roInventory";
+import { CgInventoryDocument } from "../../entities/Silver/cgInventory";
+import { RoConsumptionDocument } from "../../entities/Silver/roConsumption";
+import { CgConsumptionDocument } from "../../entities/Silver/cgConsumption";
+import { AddRoIdInfo, DashboardRoOrderDto, FilterPaginationRoOrderDto, UpdateRoOrderDto } from "../../Silver/ro-order/dto/request-roOrder.dto";
+export declare class RoOrderService {
+    private userModel;
+    private roInventoryModel;
+    private cgInventoryModel;
+    private silverProductModel;
+    private roConsumptionModel;
+    private cgConsumptionModel;
+    private roOrderModel;
+    private cgOrderModel;
+    private roMasterModel;
+    private readonly sheet;
+    private readonly spreadsheetId;
+    constructor(userModel: Model<UserDocument>, roInventoryModel: Model<RoInventoryDocument>, cgInventoryModel: Model<CgInventoryDocument>, silverProductModel: Model<SilverProductDocument>, roConsumptionModel: Model<RoConsumptionDocument>, cgConsumptionModel: Model<CgConsumptionDocument>, roOrderModel: Model<RoOrderDocument>, cgOrderModel: Model<CgOrderDocument>, roMasterModel: Model<RoMasterDocument>);
+    getCgOpenOrder(productId: any): Promise<number>;
+    updateCgInventory(productId: any, createdBy: any, updateQty: any): Promise<any>;
+    getOpenOrder(roId: any, productId: any): Promise<number>;
+    getIndianDate(date: any): Promise<any>;
+    addDataInxlsxFile(dataArray: any, range: any): Promise<any>;
+    getAllOrder(paginationDto: FilterPaginationRoOrderDto, req: Request): Promise<any>;
+    getPartialOrderInfo(uniqueNumber: any): Promise<any[]>;
+    getOrderInfo(id: string): Promise<any>;
+    updateOrder(id: string, updateOrderDto: UpdateRoOrderDto, req: Request): Promise<any>;
+    dashBoardOrder(dashboardOrderDto: DashboardRoOrderDto, req: Request): Promise<any>;
+    getOrderDropDown(req: Request, addRoIdInfo: AddRoIdInfo): Promise<any>;
+}

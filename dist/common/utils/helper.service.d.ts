@@ -1,0 +1,51 @@
+import { Model } from "mongoose";
+import { RoInventoryDocument } from '../../entities/Silver/roInventory';
+import { SilverProductDocument } from '../../entities/Silver/silverProductMaster';
+import { RoMasterDocument } from '../../entities/Silver/roMaster';
+import { CgInventoryDocument } from '../../entities/Silver/cgInventory';
+import { RoOrderDocument } from '../../entities/Silver/roOrder';
+import { CgOrderDocument } from '../../entities/Silver/cgOrder';
+import { RoConsumptionDocument } from '../../entities/Silver/roConsumption';
+import { CgConsumptionDocument } from '../../entities/Silver/cgConsumption';
+export declare class UploadFilesHelper {
+    static customFileName(req: any, file: any, cb: any): void;
+    static destinationPath(req: any, file: any, cb: any): void;
+    static RemoveFilesHelper(file: any): void;
+}
+export declare const RemoveFilesHelper: (file: string) => void;
+export declare const PushNotification: (deviceToken: string, title: string, body: string, key: string) => Promise<any>;
+export declare const calculateAverage: (numbers: any) => Promise<number>;
+export declare const diff_weeks: (dt2: any, dt1: any) => number;
+export declare const countOccurrences: () => Promise<void>;
+export declare class CronHelper {
+    private roOrderModel;
+    private cgOrderModel;
+    private roInventoryModel;
+    private cgInventoryModel;
+    private roConsumptionModel;
+    private cgConsumptionModel;
+    private roMasterModel;
+    private silverProductModel;
+    constructor(roOrderModel: Model<RoOrderDocument>, cgOrderModel: Model<CgOrderDocument>, roInventoryModel: Model<RoInventoryDocument>, cgInventoryModel: Model<CgInventoryDocument>, roConsumptionModel: Model<RoConsumptionDocument>, cgConsumptionModel: Model<CgConsumptionDocument>, roMasterModel: Model<RoMasterDocument>, silverProductModel: Model<SilverProductDocument>);
+    dataXlsx(): Promise<any>;
+    getIndianDate(date: any): Promise<any>;
+    readDataInxlsxFile(): Promise<any>;
+    addDataInxlsxFile(dataArray: any): Promise<any>;
+    getAvgWeeklyConsumptionLY4M(roId: any, productId: any): Promise<number>;
+    getAvgWeeklyConsumptionL12(roId: any, productId: any): Promise<number>;
+    getAvgWeeklyConsumptionL3(roId: any, productId: any): Promise<number>;
+    calculateRoSigma(): Promise<number>;
+    updateValueInRoInventory(): Promise<void>;
+    updateGrowthFactor(): Promise<void>;
+    getCgOpenOrder(productId: any): Promise<any>;
+    sumOfQualifiedDemand(productId: any): Promise<any>;
+    calculateRoSigm1(productId: any): Promise<any>;
+    updateCgInventory1(): Promise<void>;
+    updateStatus(): Promise<void>;
+    getOpenOrder(roId: any, productId: any): Promise<number>;
+    calculateRoSigma1(productId: any): Promise<number>;
+    createCgInventory(productId: any, qualifiedDemand: any, createdBy: any): Promise<void>;
+    updateCgInventory(productId: any, qualifiedDemandData: any, createdBy: any): Promise<void>;
+    updateROInventoryFix(): Promise<void>;
+    UpdateRoInventory(togData: any, productId: any, roId: any): Promise<boolean>;
+}

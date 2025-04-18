@@ -1,0 +1,30 @@
+import { CgConsumptionDocument } from '../../entities/Silver/cgConsumption';
+import { CgOrderDocument } from '../../entities/Silver/cgOrder';
+import { CgInventoryDocument } from '../../entities/Silver/cgInventory';
+import { SilverProductDocument } from '../../entities/Silver/silverProductMaster';
+import { RoMasterDocument } from '../../entities/Silver/roMaster';
+import { UserDocument } from '../../entities/users.entity';
+import { Model } from 'mongoose';
+import { CreateCgConsumptionDto, ImportCgConsumptionDto, UpdateCgConsumptionDto, updateStatusCgConsumptionDto } from '../../Silver/cg-consumption/dto/request-cgConsumption.dto';
+import { GetCgConsumptionInfoDto } from '../../Silver/cg-consumption/dto/response-cgConsumption.dto';
+import { Request } from 'express';
+import { FilterPaginationCgConsumptionDto } from 'src/dto/cg-consumption.dto';
+export declare class CgConsumptionService {
+    private cgInventoryModel;
+    private cgConsumptionModel;
+    private silverProductModel;
+    private cgOrderModel;
+    private userModel;
+    private roMasterModel;
+    constructor(cgInventoryModel: Model<CgInventoryDocument>, cgConsumptionModel: Model<CgConsumptionDocument>, silverProductModel: Model<SilverProductDocument>, cgOrderModel: Model<CgOrderDocument>, userModel: Model<UserDocument>, roMasterModel: Model<RoMasterDocument>);
+    getRecommendationOrder(productId: any): Promise<number>;
+    getOpenOrder(productId: any): Promise<number>;
+    createConsumption(createConsumptionDto: CreateCgConsumptionDto, req: Request): Promise<GetCgConsumptionInfoDto>;
+    getAllConsumption(paginationDto: FilterPaginationCgConsumptionDto, req: Request): Promise<any>;
+    getConsumptionInfo(id: string): Promise<GetCgConsumptionInfoDto>;
+    UpdateConsumption(updateConsumptionDto: UpdateCgConsumptionDto, req: Request): Promise<any>;
+    importConsumption(req: Request, createConsumptionDto: ImportCgConsumptionDto[]): Promise<GetCgConsumptionInfoDto>;
+    updateConsumptionStatus(id: string, updateStatusConsumptionDto: updateStatusCgConsumptionDto): Promise<updateStatusCgConsumptionDto>;
+    getConsumptionDropDown(req: Request): Promise<any>;
+    getCgInventoryList(req: Request): Promise<any>;
+}

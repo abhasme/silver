@@ -1,0 +1,10 @@
+[0;1;32m●[0m mongod.service - MongoDB Database Server
+     Loaded: loaded (/lib/systemd/system/mongod.service; enabled; vendor preset: enabled)
+     Active: [0;1;32mactive (running)[0m since Fri 2024-06-28 10:22:02 IST; 5h 58min ago
+       Docs: https://docs.mongodb.org/manual
+   Main PID: 958 (mongod)
+     Memory: 19.5M
+     CGroup: /system.slice/mongod.service
+             └─958 /usr/bin/mongod --config /etc/mongod.conf
+
+Warning: some journal files were not opened due to insufficient permissions.
