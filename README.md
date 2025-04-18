@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # gajragears_backend# Gery-meter-Backend-Silver-
 # Gery-meter-Backend-Silver-
 
@@ -23,3 +24,7 @@ Important module for the project.
 
 
 Admin can create CP and Rotex 
+=======
+# silver
+Ashwini-silver
+>>>>>>> 413b04d6f34d3588642cea8104be9b1144a9c9ea
